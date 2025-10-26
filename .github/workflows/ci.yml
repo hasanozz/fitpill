@@ -1,0 +1,66 @@
+# .github/workflows/ci.yml
+name: CI / CD
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1) Flutter
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.6'
+
+      - run: flutter --version && dart --version
+
+      # 2) Dependencies
+      - name: Install Dependencies
+        run: flutter pub get
+
+      # 3) CI için .env yaz (Cloudflare örneği)
+      - name: Create .env file for CI build
+        env:
+          R2_URL: ${{ secrets.CLOUDFLARE_R2_BASE_URL }}
+        run: |
+          echo "CLOUDFLARE_R2_BASE_URL=$R2_URL" > .env
+
+      # 4) FlutterFire CLI (Dart global; npm değil)
+      - name: Install FlutterFire CLI
+        run: dart pub global activate flutterfire_cli
+
+      # 5) firebase_options.dart + config dosyalarını üret
+      - name: Generate Firebase Options (Secrets used)
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        run: |
+          ~/.pub-cache/bin/flutterfire configure \
+            --project="$FIREBASE_PROJECT_ID" \
+            --out=lib/firebase_options.dart \
+            --platforms=android,ios \
+            --android-package-name="com.example.fitpill" \
+            --ios-bundle-id="com.example.fitpill" \
+            --yes \
+            --token "$FIREBASE_TOKEN"
+
+      # 6) Analyze & Test
+      - name: Analyze Code
+        run: flutter analyze
+      - name: Run Tests
+        run: flutter test
+
+      # 7) Build (unsigned release)
+      - name: Build Android Release (APK)
+        run: flutter build apk --release
+
+      # 8) Artifact
+      - name: Upload Android APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
