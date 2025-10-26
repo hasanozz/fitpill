@@ -57,10 +57,7 @@ Future<void> showCustomTextFieldDialog({
   await showDialog(
     context: context,
     builder: (context) {
-      final double dialogWidth =
-          width ?? MediaQuery.of(context).size.width * 0.8;
-      final double dialogHeight =
-          height ?? (160.0 + (labels.length * 90)); // default value
+
       return Dialog(
         backgroundColor: ThemeHelper.getCardColor2(context),
         shape: RoundedRectangleBorder(
@@ -117,7 +114,7 @@ Future<void> showCustomTextFieldDialog({
                                 const SizedBox(height: 16),
                               ],
                             )),
-                  if (labels.isEmpty && content != null) content!,
+                  if (labels.isEmpty && content != null) content,
                   const SizedBox(height: 4),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

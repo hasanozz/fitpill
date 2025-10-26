@@ -57,8 +57,17 @@ jobs:
             --token "$FIREBASE_TOKEN"
 
       # 6) Analyze & Test
-      - name: Analyze Code
-        run: flutter analyze
+      - name: Analyze Code (machine output to file)
+        run: |
+          mkdir -p build/reports
+          flutter analyze --format machine 2>&1 | tee build/reports/dart_analyze_machine.log || true
+
+      - name: upload analyzer log artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-analyzer-log
+          path: build/reports/dart_analyze_machine.log
+
       - name: Run Tests
         run: flutter test
 

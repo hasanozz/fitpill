@@ -4,7 +4,6 @@ import 'package:fitpill/features/main_tabs/home/anatomy/anatomy_page.dart';
 import 'package:fitpill/generated/l10n/l10n.dart';
 import 'package:fitpill/core/ui/widgets/day_iconbutton_labels.dart';
 import 'package:fitpill/features/main_tabs/calculators/calculators_screen.dart';
-import 'package:fitpill/features/main_tabs/exercises/exercises_screen.dart';
 import 'package:fitpill/features/main_tabs/home/home_screen.dart';
 import 'package:fitpill/features/main_tabs/progress/progress_page.dart';
 import 'package:fitpill/features/main_tabs/programs/workouts_root_screen.dart';

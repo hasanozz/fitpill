@@ -11,9 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
-import 'package:fitpill/generated/l10n/l10n.dart';
 // WeeklyRoutineState ve WeeklyRoutineModels içindeki Weekday'in tanımlı olduğu yerler:
-import 'package:fitpill/features/main_tabs/home/weekly_routine/weekly_routine_page.dart';
 import 'package:fitpill/features/main_tabs/home/weekly_routine/weekly_routine_models.dart';
 
 
