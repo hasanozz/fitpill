@@ -34,6 +34,9 @@ jobs:
         run: |
           echo "CLOUDFLARE_R2_BASE_URL=$R2_URL" > .env
 
+      - name: install firebae cli (npm)
+        run: npm install -g firebase-tools
+
       # 4) FlutterFire CLI (Dart global; npm değil)
       - name: Install FlutterFire CLI
         run: dart pub global activate flutterfire_cli
