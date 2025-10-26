@@ -60,7 +60,7 @@ jobs:
       - name: Analyze Code (machine output to file)
         run: |
           mkdir -p build/reports
-          flutter analyze --format machine 2>&1 | tee build/reports/dart_analyze_machine.log || true
+          dart analyze --format machine 2>&1 | tee build/reports/dart_analyze_machine.log || true
 
       - name: upload analyzer log artifact
         uses: actions/upload-artifact@v4
