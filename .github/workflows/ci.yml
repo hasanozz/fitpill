@@ -18,6 +18,11 @@ jobs:
 
       - run: flutter --version && dart --version
 
+      - name: Set up node.js (current lts)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
       # 2) Dependencies
       - name: Install Dependencies
         run: flutter pub get
