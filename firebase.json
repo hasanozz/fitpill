@@ -1,0 +1,42 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "fitpill-c4083",
+          "appId": "1:753571222968:android:5023d72845434a24ff6b4d",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "fitpill-c4083",
+          "configurations": {
+            "android": "1:753571222968:android:5023d72845434a24ff6b4d",
+            "ios": "1:753571222968:ios:cf1cbc21bd00042eff6b4d",
+            "macos": "1:753571222968:ios:cf1cbc21bd00042eff6b4d",
+            "web": "1:753571222968:web:186db9c3c6e7d710ff6b4d",
+            "windows": "1:753571222968:web:ebf000457484a28cff6b4d"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ]
+}

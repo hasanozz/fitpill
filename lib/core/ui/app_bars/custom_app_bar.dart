@@ -1,0 +1,1 @@
+// TODO: diğer random pagelerde kullanılacak AppBar'ın tasarımı

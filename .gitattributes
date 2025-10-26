@@ -1,0 +1,49 @@
+* text=auto
+
+# === SATIR SONU (EOL) STANDARDI: LF ===
+# Flutter ve Konfigurasyon Dosyaları
+*.dart       text eol=lf
+*.yaml       text eol=lf
+*.yml        text eol=lf
+*.json       text eol=lf
+*.md         text eol=lf
+*.sh         text eol=lf
+*.gradle     text eol=lf
+*.kt         text eol=lf
+*.java       text eol=lf
+*.editorconfig text eol=lf
+LICENSE      text eol=lf
+
+# Web/Diğer Varlıklar
+*.html       text eol=lf
+*.css        text eol=lf
+*.js         text eol=lf
+
+# === İKİLİ (BINARY) DOSYALAR ===
+# Görsel ve Medya
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.gif        binary
+*.svg        binary
+*.mp4        binary
+
+# Uygulama Paketleri ve Güvenlik
+*.aab        binary
+*.apk        binary
+*.ipa        binary
+*.keystore   binary
+*.jks        binary
+
+# Fontlar ve Diğer İkili Veriler
+*.ttf        binary
+*.otf        binary
+*.woff       binary
+*.woff2      binary
+*.db         binary
+*.wasm       binary
+
+# Sıkıştırılmış Dosyalar
+*.zip        binary
+*.tar        binary
+*.gz         binary
